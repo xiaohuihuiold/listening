@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
+    <string name="skip_previous">上一曲</string>
+    <string name="skip_next">下一曲</string>
+    <string name="album">专辑</string>
+    <string name="artist">艺术家</string>
+    <string name="playlist">播放列表</string>
+    <string name="all_music">所有音乐</string>
+    <string name="favorite_music">收藏夹</string>
+    <string name="now_playlist">当前播放列表</string>
+    <string name="favorite">喜欢</string>
+    <string name="unfavorite">普通</string>
+</resources>

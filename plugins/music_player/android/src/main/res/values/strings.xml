@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="skip_previous">SkipPrevious</string>
+    <string name="skip_next">SkipNext</string>
+    <string name="album">Album</string>
+    <string name="artist">Artist</string>
+    <string name="playlist">Playlist</string>
+    <string name="all_music">All music</string>
+    <string name="favorite_music">Favorite</string>
+    <string name="now_playlist">Now playlist</string>
+    <string name="favorite">Favorite</string>
+    <string name="unfavorite">Normal</string>
+</resources>
