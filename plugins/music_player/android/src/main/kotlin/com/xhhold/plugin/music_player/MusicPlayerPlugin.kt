@@ -3,7 +3,9 @@ package com.xhhold.plugin.music_player
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-/** 音乐播放器插件 */
+/** 音乐播放器插件
+ * io.flutter.embedding.engine.plugins.FlutterPlugin
+ * */
 class MusicPlayerPlugin : ApplicationFlutterPlugin("music_player") {
 
     companion object {

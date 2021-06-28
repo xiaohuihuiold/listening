@@ -16,7 +16,7 @@ object MusicPlayerStore : Serializer<MusicPlayerData> {
     override val defaultValue: MusicPlayerData
         get() = MusicPlayerData("", -1L, 0L)
 
-    override suspend fun readFrom(input: InputStream): MusicPlayerData {
+    override fun readFrom(input: InputStream): MusicPlayerData {
         val map = PreferencesMapCompat.readFrom(input).preferencesMap
         return MusicPlayerData(
             playlistParentId = map["playlistParentId"]?.string ?: "",
@@ -25,7 +25,7 @@ object MusicPlayerStore : Serializer<MusicPlayerData> {
         )
     }
 
-    override suspend fun writeTo(t: MusicPlayerData, output: OutputStream) {
+    override fun writeTo(t: MusicPlayerData, output: OutputStream) {
         PreferencesProto.PreferenceMap.newBuilder().apply {
             putPreferences(
                 "playlistParentId",

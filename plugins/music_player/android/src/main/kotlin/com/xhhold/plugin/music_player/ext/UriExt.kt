@@ -1,4 +1,4 @@
-package com.xhhold.media.ext
+package com.xhhold.plugin.music_player.ext
 
 import android.content.ContentResolver
 import android.graphics.Bitmap
@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.ParcelFileDescriptor
 import android.util.Log
-import com.xhhold.media.drawable.TextDrawable
+import com.xhhold.plugin.music_player.drawable.TextDrawable
 import java.lang.Exception
 
 fun Uri.toBitmap(contentResolver: ContentResolver): Bitmap? = toBitmap(contentResolver, null)

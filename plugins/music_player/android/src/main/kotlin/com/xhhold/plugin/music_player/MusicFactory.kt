@@ -2,16 +2,14 @@ package com.xhhold.plugin.music_player
 
 import android.media.MediaMetadataRetriever
 import android.media.MediaMetadataRetriever.*
-import android.net.Uri
 import android.util.Log
-import com.xhhold.media.ext.size
+import com.xhhold.plugin.music_player.ext.size
 import com.xhhold.plugin.music_player.entity.Album
 import com.xhhold.plugin.music_player.entity.Artist
 import com.xhhold.plugin.music_player.entity.Music
 import com.xhhold.plugin.music_player.entity.MusicWithAlbumAndArtist
 import com.xhhold.plugin.music_player.ext.generateMd5
 import com.xhhold.plugin.music_player.util.CommonUtil
-import java.io.File
 import java.io.FileDescriptor
 
 object MusicFactory {

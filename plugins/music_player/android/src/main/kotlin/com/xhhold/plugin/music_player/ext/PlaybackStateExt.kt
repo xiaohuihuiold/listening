@@ -1,4 +1,4 @@
-package com.xhhold.media.ext
+package com.xhhold.plugin.music_player.ext
 
 import android.os.SystemClock
 import android.support.v4.media.session.PlaybackStateCompat

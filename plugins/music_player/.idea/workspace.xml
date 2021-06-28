@@ -23,173 +23,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb2b9b53-fd54-4331-9d88-41543d833ecd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/example_lib_main_dart.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ApplicationFlutterPlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicDatabase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicFactory.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicScanner.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicSchema.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/AlbumDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/ArtistDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/BaseDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/MusicDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/NowPlaylistDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/dao/PlaylistDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/datastore/MusicPlayerStore.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Album.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Artist.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/BaseTime.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Music.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/NowPlaylist.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Playlist.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/PlaylistMap.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/BundleExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/DatabaseExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/FileDescriptorExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MediaDescriptionExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MusicExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/PlaybackStateExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/StringExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/UriExt.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/DataStoreManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/FileManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/MediaManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/provider/MusicDocumentsProvider.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/provider/MusicProvider.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/util/CommonUtil.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_music.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/values-zh/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/.metadata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/analysis_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/kotlin/com/xhhold/plugin/music_player_example/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/android/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/home_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/test/widget_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/icons/Icon-192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/icons/Icon-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/icons/Icon-maskable-192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/icons/Icon-maskable-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/web/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/flutter/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/flutter/generated_plugins.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/Runner.rc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/flutter_window.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/flutter_window.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/resource.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/resources/app_icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/runner.exe.manifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/utils.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/utils.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/win32_window.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/windows/runner/win32_window.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/MusicPlayerPlugin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/MusicPlayerPlugin.m" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Classes/SwiftMusicPlayerPlugin.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/music_player.podspec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/music_player.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/music_player_web.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/music_player.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/music_player_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/include/music_player/music_player_plugin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/windows/music_player_plugin.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MediaNotificationManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MediaSessionListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/drawable/TextDrawable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/DefaultMusicAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayerController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayerStateListener.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_favorite.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_favorite_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_pause.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_play.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_skip_next.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_skip_previous.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/datastore/MusicPlayerStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/datastore/MusicPlayerStore.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Album.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Album.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Artist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Artist.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/BaseTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/BaseTime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Music.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Music.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/NowPlaylist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/NowPlaylist.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Playlist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Playlist.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/PlaylistMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/PlaylistMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/FileDescriptorExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/FileDescriptorExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MediaDescriptionExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MediaDescriptionExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/PlaybackStateExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/PlaybackStateExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/UriExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/UriExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/DataStoreManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/DataStoreManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/res/drawable/ic_music.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_music.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +88,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ListeningOld" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager" selected="Flutter.example/lib/main.dart">
@@ -260,29 +128,33 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624784027905" />
-    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1624714130738">
+    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1624894533726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1624714130738" />
+    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1624894533726" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1624784646923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1624784646923" />
-    <state width="403" height="912" key="GridCell.Tab.0.bottom" timestamp="1624796134433">
+    <state width="403" height="912" key="GridCell.Tab.0.bottom" timestamp="1624894598596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624796134433" />
-    <state width="403" height="912" key="GridCell.Tab.0.center" timestamp="1624796134431">
+    <state width="403" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598596" />
+    <state width="403" height="912" key="GridCell.Tab.0.center" timestamp="1624894598595">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624796134431" />
-    <state width="403" height="912" key="GridCell.Tab.0.left" timestamp="1624796134431">
+    <state width="403" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598595" />
+    <state width="403" height="912" key="GridCell.Tab.0.left" timestamp="1624894598595">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624796134431" />
-    <state width="403" height="912" key="GridCell.Tab.0.right" timestamp="1624796134432">
+    <state width="403" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598595" />
+    <state width="403" height="912" key="GridCell.Tab.0.right" timestamp="1624894598596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624796134432" />
+    <state width="403" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598596" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1624894520813">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1624894520813" />
   </component>
 </project>

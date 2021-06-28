@@ -2,7 +2,7 @@ package com.xhhold.plugin.music_player.entity
 
 import android.os.Parcelable
 import androidx.room.*
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "music", indices = [Index(value = ["source"], unique = true)])
