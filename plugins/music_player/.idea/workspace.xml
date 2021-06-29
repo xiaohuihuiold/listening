@@ -23,41 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb2b9b53-fd54-4331-9d88-41543d833ecd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MediaNotificationManager.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MediaSessionListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/drawable/TextDrawable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/DefaultMusicAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayerController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/player/MusicPlayerStateListener.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_favorite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_favorite_border.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_pause.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_play.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_skip_next.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_skip_previous.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/datastore/MusicPlayerStore.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/datastore/MusicPlayerStore.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Album.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Album.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Artist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Artist.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/BaseTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/BaseTime.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Music.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Music.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/NowPlaylist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/NowPlaylist.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Playlist.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/Playlist.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/PlaylistMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/entity/PlaylistMap.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/FileDescriptorExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/FileDescriptorExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MediaDescriptionExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/MediaDescriptionExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/PlaybackStateExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/PlaybackStateExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/UriExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/ext/UriExt.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/DataStoreManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/manager/DataStoreManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/res/drawable/ic_music.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/res/drawable/ic_music.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/music_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/music_player.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/music_player_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/music_player_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,30 +100,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1624784027905" />
-    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1624894533726">
+    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1624977351170">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1624894533726" />
+    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1624977351170" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1624784646923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1624784646923" />
-    <state width="403" height="912" key="GridCell.Tab.0.bottom" timestamp="1624894598596">
+    <state width="403" height="912" key="GridCell.Tab.0.bottom" timestamp="1624978178509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598596" />
-    <state width="403" height="912" key="GridCell.Tab.0.center" timestamp="1624894598595">
+    <state width="403" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1624978178509" />
+    <state width="403" height="912" key="GridCell.Tab.0.center" timestamp="1624978178509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598595" />
-    <state width="403" height="912" key="GridCell.Tab.0.left" timestamp="1624894598595">
+    <state width="403" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1624978178509" />
+    <state width="403" height="912" key="GridCell.Tab.0.left" timestamp="1624978178509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598595" />
-    <state width="403" height="912" key="GridCell.Tab.0.right" timestamp="1624894598596">
+    <state width="403" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1624978178509" />
+    <state width="403" height="912" key="GridCell.Tab.0.right" timestamp="1624978178509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="403" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624894598596" />
+    <state width="403" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1624978178509" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1624894520813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

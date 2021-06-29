@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/music_player.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +13,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('scan'),
+          onPressed: () {
+            MusicPlayer.scan();
+          },
+        ),
+      ),
     );
   }
 }
