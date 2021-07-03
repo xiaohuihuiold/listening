@@ -38,7 +38,27 @@ data class Music(
     var isFavorite: Boolean,
     @Embedded
     var time: BaseTime,
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "id" to id,
+            "title" to title,
+            "album_id" to albumId,
+            "artist_id" to artistId,
+            "cover" to cover,
+            "source" to source,
+            "size" to size,
+            "duration" to duration,
+            "sample_rate" to sampleRate,
+            "channels" to channels,
+            "bits" to bits,
+            "bitrate" to bitrate,
+            "track_number" to trackNumber,
+            "is_favorite" to isFavorite,
+            "add_time" to time.addTime,
+            "update_time" to time.updateTime
+        )
+}
 
 @Parcelize
 data class MusicWithAlbumAndArtist(
@@ -54,4 +74,11 @@ data class MusicWithAlbumAndArtist(
         entityColumn = "id"
     )
     val artist: Artist?
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "music" to music.toMap(),
+            "album" to album?.toMap(),
+            "artist" to artist?.toMap()
+        )
+}

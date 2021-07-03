@@ -14,7 +14,15 @@ data class NowPlaylist(
     val musicId: Long,
     @Embedded
     val time: BaseTime
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "id" to id,
+            "music_id" to musicId,
+            "add_time" to time.addTime,
+            "update_time" to time.updateTime
+        )
+}
 
 @Parcelize
 data class NowPlaylistWithMusicAndAlbumAndArtists(
@@ -26,4 +34,10 @@ data class NowPlaylistWithMusicAndAlbumAndArtists(
         entityColumn = "id"
     )
     val music: MusicWithAlbumAndArtist
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "now_playlist" to nowPlaylist.toMap(),
+            "music" to music.toMap()
+        )
+}

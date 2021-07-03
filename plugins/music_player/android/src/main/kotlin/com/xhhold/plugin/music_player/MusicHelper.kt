@@ -12,6 +12,8 @@ import com.xhhold.plugin.music_player.entity.*
 import com.xhhold.plugin.music_player.ext.currentPlayBackPosition
 import com.xhhold.plugin.music_player.ext.getData
 import com.xhhold.plugin.music_player.ext.toSchemaRoot
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -19,21 +21,13 @@ import java.util.*
 import kotlin.concurrent.timer
 
 class MusicHelper(private val context: Context) {
-    val isConnected = MutableLiveData<Boolean?>()
+    val connected = MutableLiveData<Boolean>()
     val playState = MutableLiveData<PlaybackStateCompat?>()
     val currentPosition = MutableLiveData<MusicDuration?>()
     val currentMusic = MutableLiveData<MusicWithAlbumAndArtist?>()
-    var currentMetadata: MediaMetadataCompat? = null
+    val nowPlaylist = MutableLiveData<List<MusicWithAlbumAndArtist>>()
 
-    val playlist = MutableLiveData<List<PlaylistWithCounts>>()
-    val albums = MutableLiveData<List<AlbumWithCounts>>()
-    val artists = MutableLiveData<List<ArtistWithCounts>>()
-    val allMusic = MutableLiveData<List<MusicWithAlbumAndArtist>>()
-    val favoriteMusic = MutableLiveData<List<MusicWithAlbumAndArtist>>()
-    val nowPlaylist = MutableLiveData<List<NowPlaylistWithMusicAndAlbumAndArtists>>()
-
-    private val musicJob = SupervisorJob()
-    private val musicScope = CoroutineScope(Dispatchers.Main + musicJob)
+    private var currentMetadata: MediaMetadataCompat? = null
     private var mediaController: MediaControllerCompat? = null
     private var timer: Timer? = null
     private val mediaBrowser = MediaBrowserCompat(
@@ -45,17 +39,16 @@ class MusicHelper(private val context: Context) {
     }
 
     fun connect() {
-        if (isConnected.value != true) {
+        if (connected.value != true) {
             mediaBrowser.connect()
         }
     }
 
     fun disconnect() {
-        if (isConnected.value == true) {
+        if (connected.value == true) {
             mediaBrowser.disconnect()
         }
         timer?.cancel()
-        musicJob.cancel()
     }
 
     fun scan() {
@@ -102,17 +95,7 @@ class MusicHelper(private val context: Context) {
         mediaController?.transportControls?.seekTo(duration)
     }
 
-    fun refreshAll() {
-        refreshMusic()
-        refreshPlaylist()
-        refreshAlbums()
-        refreshArtists()
-        refreshAllMusic()
-        refreshFavoriteMusic()
-        refreshNowPlaylist()
-    }
-
-    fun refreshMusic() {
+    private fun refreshMusic() {
         subscribe("${MusicSchema.SCHEMA_MUSIC}:${currentMetadata?.description?.mediaId}") {
             if (it.isEmpty()) {
                 currentMusic.value = null
@@ -123,52 +106,86 @@ class MusicHelper(private val context: Context) {
         }
     }
 
-    fun refreshPlaylist() {
+    fun getMusic(call: MethodCall, result: MethodChannel.Result) {
+        subscribe("${MusicSchema.SCHEMA_MUSIC}:${currentMetadata?.description?.mediaId}") {
+            if (it.isEmpty()) {
+                result.success(null)
+            } else {
+                result.success(
+                    it.first().description.extras!!.getData<MusicWithAlbumAndArtist>()?.toMap()
+                )
+            }
+        }
+    }
+
+    fun getPlaylist(call: MethodCall, result: MethodChannel.Result) {
         subscribe(MusicSchema.SCHEMA_PLAYLIST.toSchemaRoot()) { list ->
-            playlist.value = list.map { it.description.extras!!.getData<PlaylistWithCounts>()!! }
+            result.success(
+                list.map { it.description.extras!!.getData<PlaylistWithCounts>()!!.toMap() }
+            )
         }
     }
 
-    fun refreshAlbums() {
+    fun getAlbums(call: MethodCall, result: MethodChannel.Result) {
         subscribe(MusicSchema.SCHEMA_ALBUM.toSchemaRoot()) { list ->
-            albums.value = list.map { it.description.extras!!.getData<AlbumWithCounts>()!! }
+            result.success(
+                list.map { it.description.extras!!.getData<AlbumWithCounts>()!!.toMap() }
+            )
         }
     }
 
-    fun refreshArtists() {
+    fun getArtists(call: MethodCall, result: MethodChannel.Result) {
         subscribe(MusicSchema.SCHEMA_ARTIST.toSchemaRoot()) { list ->
-            artists.value = list.map { it.description.extras!!.getData<ArtistWithCounts>()!! }
+            result.success(
+                list.map { it.description.extras!!.getData<ArtistWithCounts>()!!.toMap() }
+            )
         }
     }
 
-    fun refreshAllMusic() {
+    fun getAllMusic(call: MethodCall, result: MethodChannel.Result) {
         subscribe(MusicSchema.SCHEMA_ALL_MUSIC.toSchemaRoot()) { list ->
-            allMusic.value =
-                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
+            result.success(
+                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!!.toMap() }
+            )
         }
     }
 
-    fun refreshFavoriteMusic() {
+    fun getFavoriteMusic(call: MethodCall, result: MethodChannel.Result) {
         subscribe(MusicSchema.SCHEMA_FAVORITE_MUSIC.toSchemaRoot()) { list ->
-            favoriteMusic.value =
-                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
+            result.success(
+                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!!.toMap() }
+            )
         }
     }
 
-    fun refreshNowPlaylist() {
+    private fun refreshNowPlaylist() {
         subscribe(MusicSchema.SCHEMA_NOW_PLAYLIST.toSchemaRoot()) { list ->
             nowPlaylist.value =
-                list.map { it.description.extras!!.getData<NowPlaylistWithMusicAndAlbumAndArtists>()!! }
+                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
+
         }
     }
 
-    fun fetchMusicBySchemaId(schemaId: String): MutableLiveData<List<MusicWithAlbumAndArtist>> {
-        val liveData = MutableLiveData<List<MusicWithAlbumAndArtist>>()
-        subscribe(schemaId) { list ->
-            liveData.value =
-                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
+    fun getNowPlaylist(call: MethodCall, result: MethodChannel.Result) {
+        subscribe(MusicSchema.SCHEMA_NOW_PLAYLIST.toSchemaRoot()) { list ->
+            result.success(
+                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!!.toMap() }
+            )
         }
-        return liveData
+    }
+
+    fun getMusics(call: MethodCall, result: MethodChannel.Result) {
+        if (call.arguments != null) {
+            subscribe(call.arguments as String) { list ->
+                result.success(
+                    list.map {
+                        it.description.extras!!.getData<MusicWithAlbumAndArtist>()!!.toMap()
+                    }
+                )
+            }
+        } else {
+            result.error(MusicPlayerPlugin.ERROR_EXCEPTION, "schemaId == null", null)
+        }
     }
 
     private fun subscribe(
@@ -212,7 +229,7 @@ class MusicHelper(private val context: Context) {
         override fun onSessionEvent(event: String?, extras: Bundle?) {
             when (event) {
                 MediaSessionListener.Command.SCAN_CALLBACK -> {
-                    refreshAll()
+                    // refreshAll()
                 }
                 MediaSessionListener.Command.REFRESH_NOW_PLAYLIST -> {
                     refreshNowPlaylist()
@@ -224,7 +241,7 @@ class MusicHelper(private val context: Context) {
     inner class ConnectionCallback : MediaBrowserCompat.ConnectionCallback() {
 
         override fun onConnected() {
-            isConnected.value = true
+            connected.value = true
             mediaController = MediaControllerCompat(context, mediaBrowser.sessionToken)
             mediaController?.registerCallback(ControllerCallback().apply {
                 onMetadataChanged(mediaController?.metadata)
@@ -233,13 +250,20 @@ class MusicHelper(private val context: Context) {
         }
 
         override fun onConnectionFailed() {
-            isConnected.value = false
+            connected.value = false
         }
 
         override fun onConnectionSuspended() {
-            isConnected.value = false
+            connected.value = false
         }
     }
 
-    data class MusicDuration(val position: Long, val duration: Long)
+    data class MusicDuration(val position: Long, val duration: Long) {
+        fun toMap(): Map<String, Any?> {
+            return mapOf(
+                "position" to position,
+                "duration" to duration
+            )
+        }
+    }
 }

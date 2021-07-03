@@ -18,7 +18,17 @@ data class Album(
     var cover: String?,
     @Embedded
     var time: BaseTime,
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "id" to id,
+            "key" to key,
+            "title" to title,
+            "cover" to cover,
+            "add_time" to time.addTime,
+            "update_time" to time.updateTime
+        )
+}
 
 @Parcelize
 data class AlbumWithCounts(
@@ -26,7 +36,13 @@ data class AlbumWithCounts(
     val album: Album,
     @ColumnInfo(name = "counts")
     val counts: Int
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "album" to album.toMap(),
+            "counts" to counts
+        )
+}
 
 @Parcelize
 data class AlbumWithMusicAndArtists(
@@ -38,4 +54,10 @@ data class AlbumWithMusicAndArtists(
         entityColumn = "album_id"
     )
     val musics: List<MusicWithAlbumAndArtist>
-) : Parcelable
+) : Parcelable {
+    fun toMap(): Map<String, Any?> =
+        mapOf(
+            "album" to album?.toMap(),
+            "musics" to musics.map { it.toMap() }
+        )
+}
