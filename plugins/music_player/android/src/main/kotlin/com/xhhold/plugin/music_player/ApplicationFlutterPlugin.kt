@@ -38,7 +38,7 @@ abstract class ApplicationFlutterPlugin(private val name: String) : FlutterPlugi
         context = binding.applicationContext
         channel = MethodChannel(binding.binaryMessenger, name)
         channel.setMethodCallHandler(this)
-        eventChannel = EventChannel(binding.binaryMessenger, name)
+        eventChannel = EventChannel(binding.binaryMessenger, "$name/event")
         eventChannel.setStreamHandler(this)
     }
 
@@ -48,16 +48,20 @@ abstract class ApplicationFlutterPlugin(private val name: String) : FlutterPlugi
         channel.setMethodCallHandler(null)
     }
 
+    @CallSuper
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         this.binding = binding
     }
 
+    @CallSuper
     override fun onDetachedFromActivity() {
     }
 
+    @CallSuper
     override fun onDetachedFromActivityForConfigChanges() {
     }
 
+    @CallSuper
     override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
     }
 

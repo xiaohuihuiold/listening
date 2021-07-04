@@ -2,6 +2,8 @@ package com.xhhold.plugin.music_player.entity
 
 import android.os.Parcelable
 import androidx.room.*
+import com.xhhold.plugin.music_player.ext.toPath
+import com.xhhold.plugin.music_player.ext.toUri
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -24,7 +26,7 @@ data class Album(
             "id" to id,
             "key" to key,
             "title" to title,
-            "cover" to cover,
+            "cover" to (cover?.toUri()?.toPath() ?: cover),
             "add_time" to time.addTime,
             "update_time" to time.updateTime
         )

@@ -1,7 +1,7 @@
 import 'base_time.dart';
 import 'album_entity.dart';
 import 'artist_entity.dart';
-import '../map_ext.dart';
+import '../ext/map_ext.dart';
 
 class Music {
   final int id;
@@ -72,7 +72,7 @@ class MusicWithAlbumAndArtist {
 
   factory MusicWithAlbumAndArtist.fromMap(Map map) {
     return MusicWithAlbumAndArtist(
-      music: Music.fromMap(map.getObject('artist')),
+      music: Music.fromMap(map.getObject('music')),
       album:
           map['album'] == null ? null : Album.fromMap(map.getObject('album')),
       artist: map['artist'] == null

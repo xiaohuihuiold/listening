@@ -7,6 +7,7 @@ import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaControllerCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.xhhold.plugin.music_player.entity.*
 import com.xhhold.plugin.music_player.ext.currentPlayBackPosition
@@ -23,13 +24,11 @@ import kotlin.concurrent.timer
 class MusicHelper(private val context: Context) {
     val connected = MutableLiveData<Boolean>()
     val playState = MutableLiveData<PlaybackStateCompat?>()
-    val currentPosition = MutableLiveData<MusicDuration?>()
     val currentMusic = MutableLiveData<MusicWithAlbumAndArtist?>()
     val nowPlaylist = MutableLiveData<List<MusicWithAlbumAndArtist>>()
 
     private var currentMetadata: MediaMetadataCompat? = null
     private var mediaController: MediaControllerCompat? = null
-    private var timer: Timer? = null
     private val mediaBrowser = MediaBrowserCompat(
         context, ComponentName(context, MusicService::class.java), ConnectionCallback(), null
     )
@@ -39,16 +38,17 @@ class MusicHelper(private val context: Context) {
     }
 
     fun connect() {
+        Log.i(TAG, "connect")
         if (connected.value != true) {
             mediaBrowser.connect()
         }
     }
 
     fun disconnect() {
+        Log.i(TAG, "disconnect")
         if (connected.value == true) {
             mediaBrowser.disconnect()
         }
-        timer?.cancel()
     }
 
     fun scan() {
@@ -95,7 +95,22 @@ class MusicHelper(private val context: Context) {
         mediaController?.transportControls?.seekTo(duration)
     }
 
-    private fun refreshMusic() {
+    fun refreshConnected() {
+        connected.value = mediaBrowser.isConnected
+    }
+
+    fun refreshPlayState() {
+        playState.value = mediaController?.playbackState
+    }
+
+    fun refreshState() {
+        refreshConnected()
+        refreshPlayState()
+        refreshMusic()
+        refreshNowPlaylist()
+    }
+
+    fun refreshMusic() {
         subscribe("${MusicSchema.SCHEMA_MUSIC}:${currentMetadata?.description?.mediaId}") {
             if (it.isEmpty()) {
                 currentMusic.value = null
@@ -106,15 +121,10 @@ class MusicHelper(private val context: Context) {
         }
     }
 
-    fun getMusic(call: MethodCall, result: MethodChannel.Result) {
-        subscribe("${MusicSchema.SCHEMA_MUSIC}:${currentMetadata?.description?.mediaId}") {
-            if (it.isEmpty()) {
-                result.success(null)
-            } else {
-                result.success(
-                    it.first().description.extras!!.getData<MusicWithAlbumAndArtist>()?.toMap()
-                )
-            }
+    fun refreshNowPlaylist() {
+        subscribe(MusicSchema.SCHEMA_NOW_PLAYLIST.toSchemaRoot()) { list ->
+            nowPlaylist.value =
+                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
         }
     }
 
@@ -155,14 +165,6 @@ class MusicHelper(private val context: Context) {
             result.success(
                 list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!!.toMap() }
             )
-        }
-    }
-
-    private fun refreshNowPlaylist() {
-        subscribe(MusicSchema.SCHEMA_NOW_PLAYLIST.toSchemaRoot()) { list ->
-            nowPlaylist.value =
-                list.map { it.description.extras!!.getData<MusicWithAlbumAndArtist>()!! }
-
         }
     }
 
@@ -211,18 +213,6 @@ class MusicHelper(private val context: Context) {
         }
 
         override fun onPlaybackStateChanged(state: PlaybackStateCompat?) {
-            timer?.cancel()
-            if (state?.state == PlaybackStateCompat.STATE_PLAYING) {
-                timer = timer(period = 100L) {
-                    currentPosition.postValue(
-                        MusicDuration(
-                            state.currentPlayBackPosition,
-                            currentMetadata?.getLong(MediaMetadataCompat.METADATA_KEY_DURATION)
-                                ?: 0L
-                        )
-                    )
-                }
-            }
             playState.value = state
         }
 
@@ -247,6 +237,7 @@ class MusicHelper(private val context: Context) {
                 onMetadataChanged(mediaController?.metadata)
                 onPlaybackStateChanged(mediaController?.playbackState)
             })
+            refreshState()
         }
 
         override fun onConnectionFailed() {

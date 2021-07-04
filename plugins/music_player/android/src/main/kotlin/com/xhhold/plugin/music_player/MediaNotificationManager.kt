@@ -8,6 +8,7 @@ import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.core.app.NotificationCompat
 import androidx.media.session.MediaButtonReceiver
+import com.xhhold.plugin.music_player.drawable.TextDrawable
 import com.xhhold.plugin.music_player.ext.toBitmap
 
 class MediaNotificationManager(private val service: MusicService) {
@@ -98,18 +99,21 @@ class MediaNotificationManager(private val service: MusicService) {
             notificationManager.createNotificationChannel(channel)
         }
         return NotificationCompat.Builder(service, CHANNEL_ID).apply {
+            val icon = description.iconUri
+            val text = (description.title ?: description.subtitle ?: "").toString()
+            val bitmap = if (icon != null) {
+                icon.toBitmap(service.contentResolver, text)
+            } else {
+                val drawable = TextDrawable(text)
+                drawable.toBitmap(512, 512)
+            }
             setColorized(true)
             setContentTitle(description.title)
             setContentText(description.subtitle)
             setSmallIcon(R.drawable.ic_music)
             setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             setDeleteIntent(createIntent(PlaybackStateCompat.ACTION_STOP))
-            setLargeIcon(
-                description.iconUri?.toBitmap(
-                    service.contentResolver,
-                    (description.title ?: description.subtitle ?: "").toString()
-                )
-            )
+            setLargeIcon(bitmap)
             addAction(skipPreviousAction)
             addAction(if (state.state != PlaybackStateCompat.STATE_PLAYING) playAction else pauseAction)
             addAction(skipNextAction)

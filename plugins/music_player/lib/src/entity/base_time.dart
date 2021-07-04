@@ -1,4 +1,4 @@
-import '../map_ext.dart';
+import '../ext/map_ext.dart';
 
 class BaseTime {
   final int addTime;

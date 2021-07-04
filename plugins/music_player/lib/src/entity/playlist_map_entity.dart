@@ -1,7 +1,6 @@
 import 'base_time.dart';
 import 'music_entity.dart';
-import 'playlist_map_entity.dart';
-import '../map_ext.dart';
+import '../ext/map_ext.dart';
 
 class PlaylistMap {
   final int id;
