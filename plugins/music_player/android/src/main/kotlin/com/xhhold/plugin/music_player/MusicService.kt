@@ -39,6 +39,7 @@ class MusicService : MediaBrowserServiceCompat(), CoroutineScope {
             setSessionToken(sessionToken)
             setCallback(mediaSessionListener)
         }
+        mediaSession.controller.transportControls.prepare()
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {

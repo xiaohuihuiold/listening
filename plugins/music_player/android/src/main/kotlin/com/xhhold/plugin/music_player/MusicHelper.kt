@@ -237,7 +237,6 @@ class MusicHelper(private val context: Context) {
                 onMetadataChanged(mediaController?.metadata)
                 onPlaybackStateChanged(mediaController?.playbackState)
             })
-            refreshState()
         }
 
         override fun onConnectionFailed() {

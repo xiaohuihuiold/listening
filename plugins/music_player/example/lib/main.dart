@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/music_player.dart';
 import 'package:music_player_example/home_page.dart';
 
 void main() {
@@ -14,8 +15,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    super.initState();
+    MusicPlayer.refreshState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      darkTheme: ThemeData.dark(),
       home: HomePage(),
     );
   }

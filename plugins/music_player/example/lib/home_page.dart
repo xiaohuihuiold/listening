@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(),
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         child: StreamBuilder<MusicWithAlbumAndArtist?>(
           initialData: MusicPlayer.music.value,
           stream: MusicPlayer.music.stream,
