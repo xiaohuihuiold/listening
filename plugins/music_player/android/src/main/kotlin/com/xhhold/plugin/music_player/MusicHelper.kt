@@ -24,11 +24,13 @@ import kotlin.concurrent.timer
 class MusicHelper(private val context: Context) {
     val connected = MutableLiveData<Boolean>()
     val playState = MutableLiveData<PlaybackStateCompat?>()
+    val currentPosition = MutableLiveData<MusicDuration?>()
     val currentMusic = MutableLiveData<MusicWithAlbumAndArtist?>()
     val nowPlaylist = MutableLiveData<List<MusicWithAlbumAndArtist>>()
 
     private var currentMetadata: MediaMetadataCompat? = null
     private var mediaController: MediaControllerCompat? = null
+    private var timer: Timer? = null
     private val mediaBrowser = MediaBrowserCompat(
         context, ComponentName(context, MusicService::class.java), ConnectionCallback(), null
     )
@@ -49,6 +51,7 @@ class MusicHelper(private val context: Context) {
         if (connected.value == true) {
             mediaBrowser.disconnect()
         }
+        timer?.cancel()
     }
 
     fun scan() {
@@ -213,6 +216,19 @@ class MusicHelper(private val context: Context) {
         }
 
         override fun onPlaybackStateChanged(state: PlaybackStateCompat?) {
+            timer?.cancel()
+            if (state?.state == PlaybackStateCompat.STATE_PLAYING) {
+                timer = timer(period = 5000L) {
+                    currentPosition.postValue(
+                        MusicDuration(
+                            System.currentTimeMillis(),
+                            state.currentPlayBackPosition,
+                            currentMetadata?.getLong(MediaMetadataCompat.METADATA_KEY_DURATION)
+                                ?: 0L
+                        )
+                    )
+                }
+            }
             playState.value = state
         }
 
@@ -248,9 +264,10 @@ class MusicHelper(private val context: Context) {
         }
     }
 
-    data class MusicDuration(val position: Long, val duration: Long) {
+    data class MusicDuration(val time: Long, val position: Long, val duration: Long) {
         fun toMap(): Map<String, Any?> {
             return mapOf(
+                "time" to time,
                 "position" to position,
                 "duration" to duration
             )

@@ -132,6 +132,10 @@ class MusicPlayerPlugin : ApplicationFlutterPlugin("music_player") {
             playState.observe(this@MusicPlayerPlugin) {
                 channel.invokeMethod("playState", it?.state)
             }
+            currentPosition.observe(this@MusicPlayerPlugin) {
+                channel.invokeMethod("position", it?.toMap())
+
+            }
             currentMusic.observe(this@MusicPlayerPlugin) {
                 channel.invokeMethod("music", it?.toMap())
             }

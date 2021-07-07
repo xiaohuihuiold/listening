@@ -6,6 +6,7 @@ import 'entity/album_entity.dart';
 import 'entity/artist_entity.dart';
 import 'entity/playlist_entity.dart';
 import 'entity/music_entity.dart';
+import 'entity/play_state_position_entity.dart';
 
 enum PlayState {
   none,
@@ -55,6 +56,21 @@ class MusicPlayer {
   static final StreamControllerState<List<MusicWithAlbumAndArtist>>
       nowPlaylist = StreamControllerState();
 
+  static PlayStatePosition? _playStatePosition;
+
+  static int get timeNow => DateTime.now().millisecondsSinceEpoch;
+
+  static int get duration => _playStatePosition?.duration ?? 1;
+
+  static int get position {
+    final PlayStatePosition? state = _playStatePosition;
+    if (state == null) {
+      return 0;
+    }
+    final int time = timeNow - state.time + state.position;
+    return time.clamp(0, duration);
+  }
+
   static Future<dynamic> _onMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'connected':
@@ -66,6 +82,14 @@ class MusicPlayer {
           playState._add(null);
         } else {
           playState._add(PlayState.values[index]);
+        }
+        break;
+      case 'position':
+        final Map? map = call.arguments;
+        if (map == null) {
+          _playStatePosition = null;
+        } else {
+          _playStatePosition = PlayStatePosition.fromMap(map);
         }
         break;
       case 'music':

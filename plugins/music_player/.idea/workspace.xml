@@ -23,11 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb2b9b53-fd54-4331-9d88-41543d833ecd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/src/entity/play_state_position_entity.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/music_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/music_player.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,22 +117,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1624784646923" />
-    <state width="455" height="912" key="GridCell.Tab.0.bottom" timestamp="1625416862008">
+    <state width="455" height="912" key="GridCell.Tab.0.bottom" timestamp="1625669717554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="455" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625416862008" />
-    <state width="455" height="912" key="GridCell.Tab.0.center" timestamp="1625416862008">
+    <state width="455" height="912" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1625669717554" />
+    <state width="455" height="912" key="GridCell.Tab.0.center" timestamp="1625669717554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="455" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625416862008" />
-    <state width="455" height="912" key="GridCell.Tab.0.left" timestamp="1625416862007">
+    <state width="455" height="912" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1625669717554" />
+    <state width="455" height="912" key="GridCell.Tab.0.left" timestamp="1625669717554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="455" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625416862007" />
-    <state width="455" height="912" key="GridCell.Tab.0.right" timestamp="1625416862008">
+    <state width="455" height="912" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1625669717554" />
+    <state width="455" height="912" key="GridCell.Tab.0.right" timestamp="1625669717554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="455" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625416862008" />
+    <state width="455" height="912" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1625669717554" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1624894520813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
