@@ -27,6 +27,7 @@ class MusicHelper(private val context: Context) {
     val currentPosition = MutableLiveData<MusicDuration?>()
     val currentMusic = MutableLiveData<MusicWithAlbumAndArtist?>()
     val nowPlaylist = MutableLiveData<List<MusicWithAlbumAndArtist>>()
+    val scanProgress = MutableLiveData<MusicScannerProgress?>()
 
     private var currentMetadata: MediaMetadataCompat? = null
     private var mediaController: MediaControllerCompat? = null
@@ -234,8 +235,17 @@ class MusicHelper(private val context: Context) {
 
         override fun onSessionEvent(event: String?, extras: Bundle?) {
             when (event) {
+                MediaSessionListener.Command.SCAN_PROGRESS -> {
+                    if (extras == null) {
+                        return
+                    }
+                    val title = extras.getString("title")!!
+                    val index = extras.getInt("index")
+                    val length = extras.getInt("length")
+                    scanProgress.value = MusicScannerProgress(title, index, length)
+                }
                 MediaSessionListener.Command.SCAN_CALLBACK -> {
-                    // refreshAll()
+                    scanProgress.value = null
                 }
                 MediaSessionListener.Command.REFRESH_NOW_PLAYLIST -> {
                     refreshNowPlaylist()
@@ -265,11 +275,21 @@ class MusicHelper(private val context: Context) {
     }
 
     data class MusicDuration(val time: Long, val position: Long, val duration: Long) {
-        fun toMap(): Map<String, Any?> {
+        fun toMap(): Map<String, Any> {
             return mapOf(
                 "time" to time,
                 "position" to position,
                 "duration" to duration
+            )
+        }
+    }
+
+    data class MusicScannerProgress(val title: String, val index: Int, val length: Int) {
+        fun toMap(): Map<String, Any> {
+            return mapOf(
+                "title" to title,
+                "index" to index,
+                "length" to length
             )
         }
     }

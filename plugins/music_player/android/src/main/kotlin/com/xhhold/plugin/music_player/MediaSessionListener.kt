@@ -33,7 +33,16 @@ class MediaSessionListener(private val service: MusicService) : MediaSessionComp
         when (command) {
             Command.SCAN -> {
                 service.launch(Dispatchers.IO) {
-                    MusicScanner.scan(service)
+                    MusicScanner.scan(service) { title, index, length ->
+                        service.mediaSession.sendSessionEvent(
+                            Command.SCAN_PROGRESS,
+                            Bundle().apply {
+                                putString("title", title)
+                                putInt("index", index)
+                                putInt("length", length)
+                            }
+                        )
+                    }
                     service.mediaSession.sendSessionEvent(
                         Command.SCAN_CALLBACK,
                         Bundle().apply { putBoolean("success", true) }
@@ -204,6 +213,7 @@ class MediaSessionListener(private val service: MusicService) : MediaSessionComp
         const val PLAY_PARAMS_CHILD_ID = "child_id"
 
         const val SCAN = "scan"
+        const val SCAN_PROGRESS = "scan_progress"
         const val SCAN_CALLBACK = "scan_callback"
 
         const val REFRESH_NOW_PLAYLIST = "refresh_now_playlist"

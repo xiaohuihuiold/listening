@@ -7,11 +7,13 @@ import com.xhhold.plugin.music_player.ext.openFileDescriptorRead
 import com.xhhold.plugin.music_player.manager.FileManager
 import kotlinx.coroutines.runBlocking
 
+typealias MusicScannerCallback = (title: String, index: Int, length: Int) -> Unit
+
 object MusicScanner {
 
     private const val TAG = "MusicScanner"
 
-    fun scan(service: MusicService) {
+    fun scan(service: MusicService, callback: MusicScannerCallback) {
         Log.i(TAG, "scan start")
         val contentResolver = service.contentResolver
         val sources = arrayListOf<String>()
@@ -34,6 +36,9 @@ object MusicScanner {
             close()
         }
 
+        val musicSources = service.musicRepository.musicDao.getAllMusicWithAlbumAndArtists()
+            .map { it.music.source }
+        sources.removeAll(musicSources)
         sources.forEachIndexed { index: Int, source: String ->
             runBlocking {
                 Log.i(TAG, "${index + 1}/${sources.size}: $source")
@@ -50,6 +55,7 @@ object MusicScanner {
                 }
                 fileDescriptor.close()
                 if (music != null) {
+                    callback(music.music.title ?: source, index, sources.size)
                     service.musicRepository.addMusic(music)
                 }
             }

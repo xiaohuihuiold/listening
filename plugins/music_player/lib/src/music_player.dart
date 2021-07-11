@@ -7,6 +7,7 @@ import 'entity/artist_entity.dart';
 import 'entity/playlist_entity.dart';
 import 'entity/music_entity.dart';
 import 'entity/play_state_position_entity.dart';
+import 'entity/scan_progress.dart';
 
 enum PlayState {
   none,
@@ -56,6 +57,9 @@ class MusicPlayer {
   static final StreamControllerState<List<MusicWithAlbumAndArtist>>
       nowPlaylist = StreamControllerState();
 
+  static final StreamControllerState<ScanProgress?> scanProgress =
+      StreamControllerState();
+
   static PlayStatePosition? _playStatePosition;
 
   static int get timeNow => DateTime.now().millisecondsSinceEpoch;
@@ -104,6 +108,14 @@ class MusicPlayer {
         final List list = call.arguments;
         nowPlaylist
             ._add(list.map((e) => MusicWithAlbumAndArtist.fromMap(e)).toList());
+        break;
+      case 'scanProgress':
+        final Map? map = call.arguments;
+        if (map == null) {
+          scanProgress._add(null);
+        } else {
+          scanProgress._add(ScanProgress.fromMap(map));
+        }
         break;
     }
   }

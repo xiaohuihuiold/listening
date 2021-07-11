@@ -134,13 +134,15 @@ class MusicPlayerPlugin : ApplicationFlutterPlugin("music_player") {
             }
             currentPosition.observe(this@MusicPlayerPlugin) {
                 channel.invokeMethod("position", it?.toMap())
-
             }
             currentMusic.observe(this@MusicPlayerPlugin) {
                 channel.invokeMethod("music", it?.toMap())
             }
             nowPlaylist.observe(this@MusicPlayerPlugin) {
                 channel.invokeMethod("nowPlaylist", it.map { e -> e.toMap() })
+            }
+            scanProgress.observe(this@MusicPlayerPlugin) {
+                channel.invokeMethod("scanProgress", it?.toMap())
             }
         }
     }

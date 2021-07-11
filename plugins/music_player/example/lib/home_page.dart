@@ -15,47 +15,90 @@ class _HomePageState extends State<HomePage> {
   List<MusicWithAlbumAndArtist> _musics = [];
 
   @override
+  void initState() {
+    super.initState();
+    MusicPlayer.getAllMusic().then((value) {
+      setState(() {
+        _musics = value;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: _MusicController(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.search),
-        onPressed: () {
-          MusicPlayer.getAllMusic().then((value) {
-            setState(() {
-              _musics = value;
-            });
-          });
-        },
-      ),
-      body: GridView.builder(
-        itemCount: _musics.length,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
-        itemBuilder: (context, index) {
-          final item = _musics[index];
-          return InkWell(
-            onTap: () {
-              MusicPlayer.play(
-                parentId: 'all_music:-1',
-                childId: 'music:${item.music.id.toString()}',
-              );
+      bottomNavigationBar: const _MusicController(),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            child: const Icon(Icons.search),
+            onPressed: () {
+              MusicPlayer.scan();
             },
-            child: Card(
-              clipBehavior: Clip.antiAlias,
-              child: Image.file(
-                File(item.album?.cover ?? ''),
-                errorBuilder: (_, ___, ____) {
-                  return TextImage(
-                    text: item.music.title ?? item.album?.title ?? '',
-                  );
-                },
-              ),
-            ),
-          );
-        },
+          ),
+        ],
       ),
+      body: StreamBuilder<ScanProgress?>(
+          stream: MusicPlayer.scanProgress.stream,
+          builder: (context, snapshot) {
+            final ScanProgress? progress = snapshot.data;
+            if (progress != null) {
+              return Container(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            progress.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(width: 12.0),
+                        Text('${progress.index + 1}/${progress.length}'),
+                      ],
+                    ),
+                    LinearProgressIndicator(
+                      value: (progress.index + 1) / progress.length,
+                    ),
+                  ],
+                ),
+              );
+            }
+            return GridView.builder(
+              itemCount: _musics.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2),
+              itemBuilder: (context, index) {
+                final item = _musics[index];
+                return InkWell(
+                  onTap: () {
+                    MusicPlayer.play(
+                      parentId: 'all_music:-1',
+                      childId: 'music:${item.music.id.toString()}',
+                    );
+                  },
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    child: Image.file(
+                      File(item.album?.cover ?? ''),
+                      errorBuilder: (_, ___, ____) {
+                        return TextImage(
+                          text: item.music.title ?? item.album?.title ?? '',
+                        );
+                      },
+                    ),
+                  ),
+                );
+              },
+            );
+          }),
     );
   }
 }
