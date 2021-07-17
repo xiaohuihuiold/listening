@@ -4,14 +4,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:music_player/music_player.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePageTemp extends StatefulWidget {
+  const HomePageTemp({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageTempState createState() => _HomePageTempState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageTempState extends State<HomePageTemp> {
   List<MusicWithAlbumAndArtist> _musics = [];
 
   @override
