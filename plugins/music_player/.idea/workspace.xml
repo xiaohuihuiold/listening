@@ -23,17 +23,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb2b9b53-fd54-4331-9d88-41543d833ecd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/lib/page/home/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../listening/lib/common/config/theme_config.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/home/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/home/home_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/scan/scan_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/scan/scan_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/icons/Icon-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/icons/Icon-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/icons/Icon-maskable-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/icons/Icon-maskable-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../listening/web/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicScanner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicScanner.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/music_player_web.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/music_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/music_player.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[D:\Android\Sdk\.android\avd\Pixel_3a_XL_API_R.avd]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -54,6 +79,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="D:/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />

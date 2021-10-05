@@ -47,13 +47,11 @@ class _MyAppState extends State<MyApp> {
         return Stack(
           fit: StackFit.expand,
           children: [
-            StreamBuilder<MusicWithAlbumAndArtist?>(
-              initialData: MusicPlayer.music.value,
-              stream: MusicPlayer.music.stream,
-              builder: (_, snapshot) {
-                final music = snapshot.data;
+            ValueListenableBuilder<MusicWithAlbumAndArtist?>(
+              valueListenable: MusicPlayer.music,
+              builder: (_, value, child) {
                 return Image.file(
-                  File(music?.album?.cover ?? ''),
+                  File(value?.album?.cover ?? ''),
                   fit: BoxFit.cover,
                 );
               },

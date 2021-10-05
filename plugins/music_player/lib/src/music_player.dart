@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'entity/album_entity.dart';
@@ -25,20 +26,6 @@ enum PlayState {
   playbackPositionUnknown,
 }
 
-/// 带初始值的流
-class StreamControllerState<T> {
-  final StreamController<T> _controller = StreamController.broadcast();
-
-  Stream<T> get stream => _controller.stream;
-
-  T? value;
-
-  void _add(T value) {
-    this.value = value;
-    _controller.add(value);
-  }
-}
-
 class MusicPlayer {
   static final MethodChannel _channel = const MethodChannel('music_player')
     ..setMethodCallHandler(_onMethodCall);
@@ -46,19 +33,17 @@ class MusicPlayer {
       const EventChannel('music_player/event')
         ..receiveBroadcastStream().listen(_onEvent);
 
-  static final StreamControllerState<bool> connected = StreamControllerState();
+  static final ValueNotifier<bool> connected = ValueNotifier(false);
 
-  static final StreamControllerState<PlayState?> playState =
-      StreamControllerState();
+  static final ValueNotifier<PlayState?> playState = ValueNotifier(null);
 
-  static final StreamControllerState<MusicWithAlbumAndArtist?> music =
-      StreamControllerState();
+  static final ValueNotifier<MusicWithAlbumAndArtist?> music =
+      ValueNotifier(null);
 
-  static final StreamControllerState<List<MusicWithAlbumAndArtist>>
-      nowPlaylist = StreamControllerState();
+  static final ValueNotifier<List<MusicWithAlbumAndArtist>> nowPlaylist =
+      ValueNotifier([]);
 
-  static final StreamControllerState<ScanProgress?> scanProgress =
-      StreamControllerState();
+  static final ValueNotifier<ScanProgress?> scanProgress = ValueNotifier(null);
 
   static PlayStatePosition? _playStatePosition;
 
@@ -78,14 +63,14 @@ class MusicPlayer {
   static Future<dynamic> _onMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'connected':
-        connected._add(call.arguments as bool);
+        connected.value = call.arguments as bool;
         break;
       case 'playState':
         final int? index = call.arguments;
         if (index == null) {
-          playState._add(null);
+          playState.value = null;
         } else {
-          playState._add(PlayState.values[index]);
+          playState.value = PlayState.values[index];
         }
         break;
       case 'position':
@@ -99,22 +84,22 @@ class MusicPlayer {
       case 'music':
         final Map? map = call.arguments;
         if (map == null) {
-          music._add(null);
+          music.value = null;
         } else {
-          music._add(MusicWithAlbumAndArtist.fromMap(map));
+          music.value = MusicWithAlbumAndArtist.fromMap(map);
         }
         break;
       case 'nowPlaylist':
         final List list = call.arguments;
-        nowPlaylist
-            ._add(list.map((e) => MusicWithAlbumAndArtist.fromMap(e)).toList());
+        nowPlaylist.value =
+            list.map((e) => MusicWithAlbumAndArtist.fromMap(e)).toList();
         break;
       case 'scanProgress':
         final Map? map = call.arguments;
         if (map == null) {
-          scanProgress._add(null);
+          scanProgress.value = null;
         } else {
-          scanProgress._add(ScanProgress.fromMap(map));
+          scanProgress.value = ScanProgress.fromMap(map);
         }
         break;
     }

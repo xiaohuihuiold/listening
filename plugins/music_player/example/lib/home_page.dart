@@ -40,11 +40,10 @@ class _HomePageTempState extends State<HomePageTemp> {
           ),
         ],
       ),
-      body: StreamBuilder<ScanProgress?>(
-          stream: MusicPlayer.scanProgress.stream,
-          builder: (context, snapshot) {
-            final ScanProgress? progress = snapshot.data;
-            if (progress != null) {
+      body: ValueListenableBuilder<ScanProgress?>(
+          valueListenable: MusicPlayer.scanProgress,
+          builder: (context, value, child) {
+            if (value != null) {
               return Container(
                 width: double.infinity,
                 child: Column(
@@ -55,17 +54,17 @@ class _HomePageTempState extends State<HomePageTemp> {
                       children: [
                         Expanded(
                           child: Text(
-                            progress.title,
+                            value.title,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         SizedBox(width: 12.0),
-                        Text('${progress.index + 1}/${progress.length}'),
+                        Text('${value.index + 1}/${value.length}'),
                       ],
                     ),
                     LinearProgressIndicator(
-                      value: (progress.index + 1) / progress.length,
+                      value: (value.index + 1) / value.length,
                     ),
                   ],
                 ),
@@ -143,36 +142,32 @@ class __MusicControllerState extends State<_MusicController> {
           LinearProgressIndicator(
             value: MusicPlayer.position / MusicPlayer.duration,
           ),
-          StreamBuilder<MusicWithAlbumAndArtist?>(
-            initialData: MusicPlayer.music.value,
-            stream: MusicPlayer.music.stream,
-            builder: (context, snapshot) {
-              final music = snapshot.data;
+          ValueListenableBuilder<MusicWithAlbumAndArtist?>(
+            valueListenable: MusicPlayer.music,
+            builder: (context, value, child) {
               return ListTile(
-                title: Text(music?.music.title ?? ''),
-                subtitle: Text(music?.artist?.title ?? ''),
+                title: Text(value?.music.title ?? ''),
+                subtitle: Text(value?.artist?.title ?? ''),
                 leading: AspectRatio(
                   aspectRatio: 1,
                   child: Image.file(
-                    File(music?.album?.cover ?? ''),
+                    File(value?.album?.cover ?? ''),
                     errorBuilder: (_, ___, ____) {
                       return TextImage(
-                        text: music?.music.title ?? music?.album?.title ?? '',
+                        text: value?.music.title ?? value?.album?.title ?? '',
                       );
                     },
                   ),
                 ),
-                trailing: StreamBuilder<PlayState?>(
-                  initialData: MusicPlayer.playState.value,
-                  stream: MusicPlayer.playState.stream,
-                  builder: (context, snapshot) {
-                    final state = snapshot.data;
+                trailing: ValueListenableBuilder<PlayState?>(
+                  valueListenable: MusicPlayer.playState,
+                  builder: (context, value, child) {
                     return InkWell(
-                      child: Icon(state == PlayState.playing
+                      child: Icon(value == PlayState.playing
                           ? Icons.pause
                           : Icons.play_arrow),
                       onTap: () {
-                        if (state == PlayState.playing) {
+                        if (value == PlayState.playing) {
                           MusicPlayer.pause();
                         } else {
                           MusicPlayer.play();

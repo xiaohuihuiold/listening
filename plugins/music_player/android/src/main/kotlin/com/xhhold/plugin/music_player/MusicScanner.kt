@@ -42,21 +42,27 @@ object MusicScanner {
         sources.forEachIndexed { index: Int, source: String ->
             runBlocking {
                 Log.i(TAG, "${index + 1}/${sources.size}: $source")
-                val fileDescriptor = source.openFileDescriptorRead(contentResolver)
-                    ?: return@runBlocking
-                val music = MusicFactory.decodeFromPath(
-                    source,
-                    fileDescriptor.fileDescriptor
-                ) { md5: String, bytes: ByteArray? ->
-                    if (bytes == null) {
-                        return@decodeFromPath null
+                runCatching {
+                    val fileDescriptor = source.openFileDescriptorRead(contentResolver)
+                        ?: return@runBlocking
+                    val music = MusicFactory.decodeFromPath(
+                        source,
+                        fileDescriptor.fileDescriptor
+                    ) { md5: String, bytes: ByteArray? ->
+                        if (bytes == null) {
+                            return@decodeFromPath null
+                        }
+                        FileManager.saveAlbumImageCache(md5, bytes)?.toString()
                     }
-                    FileManager.saveAlbumImageCache(md5, bytes)?.toString()
-                }
-                fileDescriptor.close()
-                if (music != null) {
-                    callback(music.music.title ?: source, index, sources.size)
-                    service.musicRepository.addMusic(music)
+                    fileDescriptor.close()
+                    if (music != null) {
+                        service.musicRepository.addMusic(music)
+                    }
+                    return@runCatching music
+                }.onSuccess {
+                    callback(it?.music?.title ?: source, index, sources.size)
+                }.onFailure {
+                    callback(source, index, sources.size)
                 }
             }
         }
