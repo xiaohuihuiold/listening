@@ -1,5 +1,7 @@
 package com.xhhold.plugin.music_player
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.util.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -40,7 +42,11 @@ class MusicPlayerPlugin : ApplicationFlutterPlugin("music_player") {
             when (call.method) {
                 "scan" -> {
                     Log.i(TAG, "scan")
-                    musicHelper.scan()
+                    requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)) { _: Array<out String>, grantResults: IntArray ->
+                        if (grantResults.any { it == PackageManager.PERMISSION_GRANTED }) {
+                            musicHelper.scan()
+                        }
+                    }
                     result.success(null)
                 }
                 "play" -> {
