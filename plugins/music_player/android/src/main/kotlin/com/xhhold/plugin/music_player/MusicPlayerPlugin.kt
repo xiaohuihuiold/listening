@@ -72,7 +72,7 @@ class MusicPlayerPlugin : ApplicationFlutterPlugin("music_player") {
                 }
                 "skipToNext" -> {
                     Log.i(TAG, "skipToNext")
-                    musicHelper.skipToPrevious()
+                    musicHelper.skipToNext()
                     result.success(null)
                 }
                 "seekTo" -> {

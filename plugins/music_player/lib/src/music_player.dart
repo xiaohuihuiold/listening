@@ -26,6 +26,21 @@ enum PlayState {
   playbackPositionUnknown,
 }
 
+class MusicSchema {
+  static const _root = MusicSchema._('-1');
+  static const music = MusicSchema._('music');
+  static const allMusic = MusicSchema._('all_music');
+  static const favoriteMusic = MusicSchema._('favorite_music');
+  static const nowPlaylist = MusicSchema._('now_playlist');
+  static const artist = MusicSchema._('artist');
+  static const album = MusicSchema._('album');
+  static const playlist = MusicSchema._('playlist');
+
+  final String value;
+
+  const MusicSchema._(this.value);
+}
+
 class MusicPlayer {
   static final MethodChannel _channel = const MethodChannel('music_player')
     ..setMethodCallHandler(_onMethodCall);
@@ -56,8 +71,19 @@ class MusicPlayer {
     if (state == null) {
       return 0;
     }
-    final int time = timeNow - state.time + state.position;
+    int time = timeNow - state.time + state.position;
+    if (playState.value != PlayState.playing) {
+      time = state.position;
+    }
     return time.clamp(0, duration);
+  }
+
+  static double get progress {
+    double progress = 0.0;
+    try {
+      progress = position.toDouble() / duration.toDouble();
+    } catch (e) {}
+    return progress.clamp(0.0, 1.0);
   }
 
   static Future<dynamic> _onMethodCall(MethodCall call) async {
@@ -113,7 +139,15 @@ class MusicPlayer {
     await _channel.invokeMethod('scan');
   }
 
-  static Future<void> play({String? parentId, String? childId}) async {
+  static Future<void> play({MusicSchema? schema, int? id, int? musicId}) async {
+    String? parentId;
+    if (schema != null) {
+      parentId = '${schema.value}:${id ?? MusicSchema._root.value}';
+    }
+    String? childId;
+    if (musicId != null) {
+      childId = '${MusicSchema.music.value}:$musicId';
+    }
     await _channel.invokeMethod('play', {
       'parentId': parentId,
       'childId': childId,

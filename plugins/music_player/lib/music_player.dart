@@ -5,3 +5,5 @@ export 'src/entity/playlist_entity.dart';
 export 'src/entity/music_entity.dart';
 export 'src/entity/scan_progress.dart';
 export 'src/widget/text_image.dart';
+export 'src/widget/music_image.dart';
+export 'src/widget/music_background.dart';

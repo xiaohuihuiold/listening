@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:listening/page/scan/scan_provider.dart';
 import 'package:music_player/music_player.dart';
@@ -28,7 +30,13 @@ class _ScanPageState extends State<ScanPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
+    EdgeInsetsGeometry padding;
+    if (size.width > size.height) {
+      padding = EdgeInsets.symmetric(vertical: size.height / 4.0);
+    } else {
+      padding = EdgeInsets.symmetric(horizontal: size.width / 4.0);
+    }
     final result = ValueListenableBuilder<ScanProgress?>(
       valueListenable: MusicPlayer.scanProgress,
       builder: (_, value, child) {
@@ -46,15 +54,25 @@ class _ScanPageState extends State<ScanPage> {
                 style: textTheme.headline5,
               )
             else ...[
-              Text(
-                '${value.index + 1}/${value.length}',
-                style: textTheme.headline5,
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(
+                    '${value.index + 1}/${value.length}',
+                    style: textTheme.headline5,
+                  ),
+                ),
               ),
-              Text(
-                value.title,
-                maxLines: 1,
-                style: textTheme.caption,
-                overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    value.title,
+                    maxLines: 1,
+                    style: textTheme.caption,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
             ]
           ],
@@ -73,9 +91,7 @@ class _ScanPageState extends State<ScanPage> {
             alignment: Alignment.center,
             children: [
               CircularProgressIndicator(value: progress),
-              IntrinsicWidth(
-                child: texts,
-              ),
+              IntrinsicWidth(child: texts),
             ],
           ),
         );
@@ -84,7 +100,7 @@ class _ScanPageState extends State<ScanPage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: size.width / 4.0),
+          padding: padding,
           child: AspectRatio(aspectRatio: 1.0, child: result),
         ),
       ),

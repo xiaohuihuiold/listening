@@ -20,6 +20,9 @@ class Music {
   final bool isFavorite;
   final BaseTime time;
 
+  /// new
+  final String durationStr;
+
   const Music({
     required this.id,
     this.title,
@@ -36,6 +39,7 @@ class Music {
     this.trackNumber,
     required this.isFavorite,
     required this.time,
+    required this.durationStr,
   });
 
   factory Music.fromMap(Map map) {
@@ -55,6 +59,9 @@ class Music {
       trackNumber: map.getIntOrNull('track_number'),
       isFavorite: map.getBool('is_favorite'),
       time: BaseTime.fromMap(map),
+      durationStr: Duration(milliseconds: map.getInt('duration'))
+          .toString()
+          .replaceAll(RegExp(r'.\d*$'), ''),
     );
   }
 }
