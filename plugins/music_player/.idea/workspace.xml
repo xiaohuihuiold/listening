@@ -23,24 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb2b9b53-fd54-4331-9d88-41543d833ecd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/home/album_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../listening/lib/page/home/play_view.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../listening/lib/widget/music_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../listening/lib/widget/palette_builder.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widget/music_background.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/widget/music_image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/lib/page/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/lib/page/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/lib/page/home/home_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/lib/page/home/home_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/lib/page/scan/scan_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/lib/page/scan/scan_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../listening/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../listening/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/xhhold/plugin/music_player/MusicPlayerPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/music_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/music_player.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/entity/music_entity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/entity/music_entity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/music_player.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/music_player.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

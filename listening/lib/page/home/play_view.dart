@@ -27,7 +27,23 @@ class _PlayViewState extends State<PlayView>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return widget.isHorizontal ? _HorizontalPlayView() : const SizedBox();
+    return widget.isHorizontal
+        ? const _HorizontalPlayView()
+        : const _VerticalPlayView();
+  }
+}
+
+class _VerticalPlayView extends StatefulWidget {
+  const _VerticalPlayView({Key? key}) : super(key: key);
+
+  @override
+  _VerticalPlayViewState createState() => _VerticalPlayViewState();
+}
+
+class _VerticalPlayViewState extends State<_VerticalPlayView> {
+  @override
+  Widget build(BuildContext context) {
+    return const _PlayingList();
   }
 }
 
@@ -39,91 +55,134 @@ class _HorizontalPlayView extends StatefulWidget {
 }
 
 class _HorizontalPlayViewState extends State<_HorizontalPlayView> {
+  final showRight = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(child: _PlayCard()),
-        Expanded(
-          child: ValueListenableBuilder<MusicWithAlbumAndArtist?>(
-            valueListenable: MusicPlayer.music,
-            builder: (context, now, child) {
-              return ValueListenableBuilder<List<MusicWithAlbumAndArtist>>(
-                valueListenable: MusicPlayer.nowPlaylist,
-                builder: (_, value, child) {
-                  return ListView.builder(
-                    itemCount: value.length,
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (_, index) {
-                      final music = value[index];
-                      Widget image;
-                      final cover = music.music.cover ??
-                          music.album?.cover ??
-                          music.artist?.cover;
-                      final title = music.music.title ?? 'Unknown';
-                      final album = music.album?.title ?? 'Unknown';
-                      final artist = music.artist?.title ?? 'Unknown';
-                      if (cover != null) {
-                        image = Image.file(
-                          File(cover),
-                          key: ValueKey(cover),
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, __, ___) {
-                            return TextImage(text: title);
-                          },
-                        );
-                      } else {
-                        image = TextImage(text: title);
-                      }
-                      if (now?.music.id == music.music.id) {
-                        image = Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            image,
-                            Container(
-                              color: Colors.black38,
-                              alignment: Alignment.center,
-                              child: const Icon(
-                                Icons.pause,
-                                color: Colors.white,
-                                size: 24.0,
-                              ),
-                            ),
+    return SliderTheme(
+      data: const SliderThemeData(
+        trackHeight: 3,
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
+      ),
+      child: SizedBox.expand(
+        child: Row(
+          children: [
+            Expanded(
+              child: _PlayCard(showRight: showRight),
+            ),
+            Expanded(
+              child: ValueListenableBuilder<bool>(
+                valueListenable: showRight,
+                builder: (context, show, child) {
+                  return Column(
+                    children: [
+                      const Expanded(child: _PlayingList()),
+                      if (show)
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            _TimerSeekBar(),
+                            _PlayControl(),
                           ],
-                        );
-                      }
-                      return ListTile(
-                        title: Text(title),
-                        subtitle: Text(artist),
-                        leading: AspectRatio(
-                          aspectRatio: 1.0,
-                          child: Card(
-                            clipBehavior: Clip.hardEdge,
-                            child: image,
-                          ),
                         ),
-                        trailing: Text(music.music.durationStr),
-                        onTap: () {
-                          MusicPlayer.play(
-                            schema: MusicSchema.nowPlaylist,
-                            musicId: music.music.id,
-                          );
-                        },
-                      );
-                    },
+                    ],
                   );
                 },
-              );
-            },
-          ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
+    );
+  }
+}
+
+class _PlayingList extends StatelessWidget {
+  const _PlayingList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<MusicWithAlbumAndArtist?>(
+      valueListenable: MusicPlayer.music,
+      builder: (context, now, child) {
+        return ValueListenableBuilder<List<MusicWithAlbumAndArtist>>(
+          valueListenable: MusicPlayer.nowPlaylist,
+          builder: (_, value, child) {
+            return ListView.builder(
+              itemCount: value.length,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (_, index) {
+                final music = value[index];
+                Widget image;
+                final cover = music.music.cover ??
+                    music.album?.cover ??
+                    music.artist?.cover;
+                final title = music.music.title ?? 'Unknown';
+                final album = music.album?.title ?? 'Unknown';
+                final artist = music.artist?.title ?? 'Unknown';
+                if (cover != null) {
+                  image = Image.file(
+                    File(cover),
+                    key: ValueKey(cover),
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) {
+                      return TextImage(text: title);
+                    },
+                  );
+                } else {
+                  image = TextImage(text: title);
+                }
+                if (now?.music.id == music.music.id) {
+                  image = Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      image,
+                      Container(
+                        color: Colors.black38,
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.pause,
+                          color: Colors.white,
+                          size: 24.0,
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return ListTile(
+                  title: Text(title),
+                  subtitle: Text(artist),
+                  leading: AspectRatio(
+                    aspectRatio: 1.0,
+                    child: Card(
+                      clipBehavior: Clip.hardEdge,
+                      child: image,
+                    ),
+                  ),
+                  trailing: Text(music.music.durationStr),
+                  onTap: () {
+                    MusicPlayer.play(
+                      schema: MusicSchema.nowPlaylist,
+                      musicId: music.music.id,
+                    );
+                  },
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 }
 
 class _PlayCard extends StatefulWidget {
-  const _PlayCard({Key? key}) : super(key: key);
+  final ValueNotifier<bool> showRight;
+
+  const _PlayCard({
+    Key? key,
+    required this.showRight,
+  }) : super(key: key);
 
   @override
   _PlayCardState createState() => _PlayCardState();
@@ -138,42 +197,6 @@ class _PlayCardState extends State<_PlayCard> {
       builder: (context, value, child) {
         final cover =
             value?.music.cover ?? value?.album?.cover ?? value?.artist?.cover;
-        final control = Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.skip_previous),
-              onPressed: () => MusicPlayer.skipToPrevious(),
-            ),
-            ValueListenableBuilder<PlayState?>(
-              valueListenable: MusicPlayer.playState,
-              builder: (context, value, child) {
-                if (value != PlayState.playing) {
-                  return IconButton(
-                    iconSize: 58,
-                    icon: const Icon(Icons.play_circle),
-                    onPressed: () {
-                      MusicPlayer.play();
-                    },
-                  );
-                }
-                return IconButton(
-                  iconSize: 58,
-                  icon: const Icon(Icons.pause_circle),
-                  onPressed: () {
-                    MusicPlayer.pause();
-                  },
-                );
-              },
-            ),
-            IconButton(
-              iconSize: 48,
-              icon: const Icon(Icons.skip_next),
-              onPressed: () => MusicPlayer.skipToNext(),
-            ),
-          ],
-        );
         Widget result = Column(
           children: [
             Expanded(
@@ -216,8 +239,29 @@ class _PlayCardState extends State<_PlayCard> {
                         ),
                       ],
                     ),
-                    const _TimerSeekBar(),
-                    control,
+                    Flexible(
+                      child: LayoutBuilder(
+                        builder: (_, constraints) {
+                          final showRight = constraints.biggest.height < 60;
+                          if (showRight != widget.showRight.value) {
+                            WidgetsBinding.instance
+                                .addPostFrameCallback((timeStamp) {
+                              widget.showRight.value = showRight;
+                            });
+                          }
+                          if (showRight) {
+                            return const SizedBox();
+                          }
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              _TimerSeekBar(),
+                              _PlayControl(),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -282,6 +326,57 @@ class _PlayCardState extends State<_PlayCard> {
       padding: const EdgeInsets.all(24.0),
       child: result,
     );
+  }
+}
+
+class _PlayControl extends StatelessWidget {
+  const _PlayControl({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
+    final result = ValueListenableBuilder<MusicWithAlbumAndArtist?>(
+      valueListenable: MusicPlayer.music,
+      builder: (context, value, child) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              iconSize: 48,
+              icon: const Icon(Icons.skip_previous),
+              onPressed: () => MusicPlayer.skipToPrevious(),
+            ),
+            ValueListenableBuilder<PlayState?>(
+              valueListenable: MusicPlayer.playState,
+              builder: (context, value, child) {
+                if (value != PlayState.playing) {
+                  return IconButton(
+                    iconSize: 58,
+                    icon: const Icon(Icons.play_circle),
+                    onPressed: () {
+                      MusicPlayer.play();
+                    },
+                  );
+                }
+                return IconButton(
+                  iconSize: 58,
+                  icon: const Icon(Icons.pause_circle),
+                  onPressed: () {
+                    MusicPlayer.pause();
+                  },
+                );
+              },
+            ),
+            IconButton(
+              iconSize: 48,
+              icon: const Icon(Icons.skip_next),
+              onPressed: () => MusicPlayer.skipToNext(),
+            ),
+          ],
+        );
+      },
+    );
+    return result;
   }
 }
 
